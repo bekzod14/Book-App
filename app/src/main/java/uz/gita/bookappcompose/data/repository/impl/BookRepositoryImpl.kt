@@ -15,16 +15,19 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
+import uz.gita.bookappcompose.data.MySharedPreference
 import uz.gita.bookappcompose.data.models.BookData
 import uz.gita.bookappcompose.data.repository.BookRepository
 import uz.gita.bookappcompose.data.source.local.room.BookDao
 import uz.gita.bookappcompose.utils.toBookData
+import javax.inject.Inject
 
-class BookRepositoryImpl(
-    private val dao: BookDao
-) : BookRepository {
+class BookRepositoryImpl @Inject constructor(
+    private val dao: BookDao,
+
+    ) : BookRepository {
     private val dirPath = Environment.getExternalStorageDirectory().absolutePath
-
+    private val preference = MySharedPreference.getInstance()
     private val firestore = FirebaseFirestore.getInstance()
 
     override fun getBooks(): Flow<List<BookData>> =
@@ -68,6 +71,10 @@ class BookRepositoryImpl(
 
     override suspend fun cancelDownload(bookData: BookData) {
         PRDownloader.cancel(bookData.id)
+    }
+
+    override suspend fun isFirstEnter(): Flow<Boolean> = flow {
+        emit(preference.getIsFirst())
     }
 }
 
