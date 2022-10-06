@@ -2,8 +2,9 @@ package uz.gita.bookappcompose.data
 
 import android.content.Context
 import android.content.SharedPreferences
+import javax.inject.Singleton
 
-
+@Singleton
 class MySharedPreference private constructor(context: Context) {
     init {
         sharedPreferences = context.getSharedPreferences("app_name", Context.MODE_PRIVATE)
@@ -27,10 +28,10 @@ class MySharedPreference private constructor(context: Context) {
         fun getInstance() = mysSharedPreference!!
     }
 
-    fun setOpenScreen(screenName: String) {
-        editor.putString("screen_name", screenName).apply()
+    fun setIsFirst(isFirst: Boolean) {
+        editor.putBoolean("is_first", isFirst).apply()
     }
 
-    fun getOpenScreen(): String =
-        sharedPreferences.getString("screen_name", "Intro Screen").toString()
+    fun getIsFirst(): Boolean =
+        sharedPreferences.getBoolean("is_first", false)
 }
