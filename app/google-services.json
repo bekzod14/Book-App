@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "189759717161",
+    "project_id": "book-app-97dad",
+    "storage_bucket": "book-app-97dad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:189759717161:android:7c62c6378e215035f58138",
+        "android_client_info": {
+          "package_name": "uz.gita.bookapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "189759717161-h8iai6jukqcevl2gqvccl4hquseq5bua.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpTkQ-_nQY_8w52DGX9XoBcMhSeEh3GEM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "189759717161-h8iai6jukqcevl2gqvccl4hquseq5bua.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:189759717161:android:bfeeb24b0ad6122cf58138",
+        "android_client_info": {
+          "package_name": "uz.gita.bookappcompose"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "189759717161-h8iai6jukqcevl2gqvccl4hquseq5bua.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpTkQ-_nQY_8w52DGX9XoBcMhSeEh3GEM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "189759717161-h8iai6jukqcevl2gqvccl4hquseq5bua.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
