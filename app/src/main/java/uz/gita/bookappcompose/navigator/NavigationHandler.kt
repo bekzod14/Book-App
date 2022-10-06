@@ -1,4 +1,4 @@
-package uz.gita.composeexample2.navigator
+package uz.gita.bookappcompose.navigator
 
 import cafe.adriel.voyager.navigator.Navigator
 import kotlinx.coroutines.flow.Flow
