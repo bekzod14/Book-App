@@ -10,11 +10,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import cafe.adriel.voyager.androidx.AndroidScreen
 import cafe.adriel.voyager.hilt.getViewModel
 import org.orbitmvi.orbit.compose.collectAsState
 import uz.gita.bookappcompose.R
 import uz.gita.bookappcompose.presenter.SplashViewModelImpl
+import uz.gita.bookappcompose.ui.theme.BookAppTheme
 
 
 class SplashScreen : AndroidScreen() {
@@ -22,14 +24,13 @@ class SplashScreen : AndroidScreen() {
     @Composable
     override fun Content() {
         val viewModel: SplashViewModel = getViewModel<SplashViewModelImpl>()
-        val uiState = viewModel.collectAsState().value
-        SplashScreenContent(viewModel::onEventDispatcher)
+        SplashScreenContent()
     }
 }
 
 @Composable
 private fun SplashScreenContent(
-    eventDispatcher: (IntentSplash) -> Unit
+
 ) {
 
     Column(
@@ -45,13 +46,12 @@ private fun SplashScreenContent(
         )
     }
 
-    eventDispatcher(IntentSplash.OpenNext)
 }
 
-//@Composable
-//@Preview
-//private fun SplashScreenPreview() {
-//    BookAppComposeTheme() {
-//        SplashScreenContent(UiState(), {})
-//    }
-//}
+@Composable
+@Preview
+private fun SplashScreenPreview() {
+    BookAppTheme() {
+        SplashScreenContent()
+    }
+}

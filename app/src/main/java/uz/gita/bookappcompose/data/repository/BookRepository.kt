@@ -16,4 +16,5 @@ interface BookRepository {
 
     suspend fun cancelDownload(bookData: BookData)
 
+    suspend fun isFirstEnter(): Flow<Boolean>
 }
