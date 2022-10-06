@@ -1,4 +1,4 @@
-package uz.xsoft.lesson43.utils
+package uz.gita.bookappcompose.utils
 
 import org.orbitmvi.orbit.ContainerHost
 
