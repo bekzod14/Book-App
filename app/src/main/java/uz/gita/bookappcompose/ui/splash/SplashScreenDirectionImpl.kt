@@ -10,10 +10,10 @@ class SplashScreenDirectionImpl @Inject constructor(
 ) : SplashScreenDirection {
 
     override suspend fun navigateToIntroScreen() {
-        appNavigator.navigateTo(IntroScreen())
+        appNavigator.navigateForSplash(IntroScreen())
     }
 
     override suspend fun navigateToMainScreen() {
-        appNavigator.navigateTo(MainScreen())
+        appNavigator.navigateForSplash(MainScreen())
     }
 }

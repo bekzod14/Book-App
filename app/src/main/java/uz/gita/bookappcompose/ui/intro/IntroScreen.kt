@@ -20,6 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.androidx.AndroidScreen
+import cafe.adriel.voyager.hilt.getViewModel
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
@@ -28,20 +29,23 @@ import com.google.accompanist.systemuicontroller.SystemUiController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import uz.gita.bookappcompose.R
 import uz.gita.bookappcompose.data.models.IntroData
+import uz.gita.bookappcompose.presenter.IntroScreenViewModelImpl
 
 class IntroScreen : AndroidScreen() {
 
     @Composable
     override fun Content() {
+        val viewModel: IntroScreenViewModel = getViewModel<IntroScreenViewModelImpl>()
         Surface(Modifier.fillMaxSize()) {
-            TabLayout()
+            TabLayout(viewModel::onEventDispatcher)
         }
     }
 
-    @Preview
     @OptIn(ExperimentalPagerApi::class)
     @Composable
-    fun TabLayout() {
+    fun TabLayout(
+        eventDispatcher: (Intent) -> Unit
+    ) {
         val systemUiController: SystemUiController = rememberSystemUiController()
         systemUiController.isSystemBarsVisible = false//remove status bar
         val items = ArrayList<IntroData>()
@@ -75,10 +79,9 @@ class IntroScreen : AndroidScreen() {
         OnBoardingPager(
             item = items,
             pagerState = pagerState,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            eventDispatcher
         )
-
-
     }
 }
 
@@ -87,7 +90,9 @@ class IntroScreen : AndroidScreen() {
 fun OnBoardingPager(
     item: List<IntroData>,
     pagerState: PagerState,
-    modifier: Modifier
+    modifier: Modifier,
+    eventDispatcher: (Intent) -> Unit
+
 ) {
     Box(modifier = modifier) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -109,7 +114,9 @@ fun OnBoardingPager(
 
                     if (page == 2) {
                         Button(
-                            onClick = {},
+                            onClick = {
+                                eventDispatcher.invoke(Intent.OpenMain)
+                            },
                             modifier = Modifier
                                 .fillMaxWidth(),
                         ) {
@@ -119,18 +126,5 @@ fun OnBoardingPager(
                 }
             }
         }
-
-        /*Box(modifier = Modifier.align(Alignment.BottomCenter)) {
-            Card(
-                colors = CardDefaults.cardColors(containerColor = Color.White),
-                modifier = Modifier
-                    .background(Color.White)
-                    .fillMaxWidth()
-                    .height(340.dp),
-            ) {
-
-            }
-
-        }*/
     }
 }

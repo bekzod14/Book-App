@@ -33,5 +33,5 @@ class MySharedPreference private constructor(context: Context) {
     }
 
     fun getIsFirst(): Boolean =
-        sharedPreferences.getBoolean("is_first", false)
+        sharedPreferences.getBoolean("is_first", true)
 }

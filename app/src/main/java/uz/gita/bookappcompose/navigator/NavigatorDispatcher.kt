@@ -19,4 +19,8 @@ class NavigatorDispatcher @Inject constructor() : AppNavigator, NavigationHandle
     override suspend fun navigateTo(screen: AppScreen) = navigate {
         push(screen)
     }
+
+    override suspend fun navigateForSplash(screen: AppScreen) = navigate {
+        replace(screen)
+    }
 }

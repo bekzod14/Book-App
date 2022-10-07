@@ -8,6 +8,6 @@ class IntroScreenDirectionImpl @Inject constructor(
     private val appNavigator: AppNavigator
 ) : IntroScreenDirection {
     override suspend fun navigateToMainScreen() {
-        appNavigator.navigateTo(MainScreen())
+        appNavigator.navigateForSplash(MainScreen())
     }
 }
