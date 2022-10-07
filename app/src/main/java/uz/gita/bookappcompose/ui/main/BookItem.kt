@@ -1,8 +1,11 @@
 package uz.gita.bookappcompose.ui.main
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -19,14 +22,23 @@ fun BookItem(
     author: String,
     bookName: String,
 ) {
-    Card {
-        Image(
-            painter = painterResource(id = image),
-            contentDescription = null,
-            contentScale = ContentScale.Crop
-        )
+    Column {
+
+        Card {
+            Image(
+                painter = painterResource(id = image),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.aspectRatio(1f)
+            )
+
+        }
+
+        Text(text = author)
+        Text(text = bookName)
 
     }
+
 }
 
 @Preview
