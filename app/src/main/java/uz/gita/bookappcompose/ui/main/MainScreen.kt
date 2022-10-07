@@ -17,6 +17,8 @@ import org.orbitmvi.orbit.compose.collectAsState
 import uz.gita.bookappcompose.R
 import uz.gita.bookappcompose.data.models.BookData
 import uz.gita.bookappcompose.presenter.MainViewModelImpl
+import uz.gita.bookappcompose.ui.books.BooksScreen
+import uz.gita.bookappcompose.ui.saved.SavedBooksScreen
 import uz.gita.bookappcompose.ui.theme.BookAppTheme
 import uz.gita.bookappcompose.ui.theme.SELECTED_ICON_COLOR
 
@@ -57,25 +59,9 @@ fun MainScreenContent(uiState: MainUiState, eventDispatcher: (MainIntent) -> Uni
         ) {
 
             if (isHome) {
-                when (uiState) {
-
-                    is MainUiState.Books -> {
-                        if (uiState.books.isEmpty()) {
-
-                            Text(text = "Saved", modifier = Modifier.align(Alignment.Center))
-                        } else {
-                            LazyColumn {
-                                items(uiState.books) {
-                                    BookItem(it, eventDispatcher)
-                                }
-                            }
-                        }
-                    }
-                    else -> {}
-                }
-
+                BooksScreen().Content()
             } else {
-//                Text(text = "Saved", modifier = Modifier.align(Alignment.Center))
+                SavedBooksScreen().Content()
             }
 
         }
