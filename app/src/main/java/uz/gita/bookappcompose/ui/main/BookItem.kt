@@ -12,6 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -76,7 +77,8 @@ fun BookItem(
             text = bookData.author,
             fontSize = 24.sp,
             textAlign = TextAlign.Center,
-            color = Color.Gray
+            color = Color.Gray,
+            overflow = TextOverflow.Ellipsis
         )
 
         Text(
@@ -85,7 +87,8 @@ fun BookItem(
                 .padding(top = 10.dp),
             text = bookData.name,
             fontSize = 24.sp,
-            color = Color.Black
+            color = Color.Black,
+            overflow = TextOverflow.Ellipsis
         )
 
     }
