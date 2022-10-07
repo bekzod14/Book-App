@@ -10,7 +10,12 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://jitpack.io' }
+        jcenter()
+        maven {
+            url 'https://jitpack.io'
+        }
+
+
     }
 }
 rootProject.name = "Book App Compose"
