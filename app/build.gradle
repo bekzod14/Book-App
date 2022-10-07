@@ -100,4 +100,8 @@ dependencies {
     implementation "com.google.accompanist:accompanist-systemuicontroller:0.17.0"
     implementation "com.google.accompanist:accompanist-pager:0.13.0"
     implementation "com.google.accompanist:accompanist-pager-indicators:0.13.0"
+
+    //pdf view
+    implementation 'com.github.barteksc:android-pdf-viewer:2.8.0'
+
 }
