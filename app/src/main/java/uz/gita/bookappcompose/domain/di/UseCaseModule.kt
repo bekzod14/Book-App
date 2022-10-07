@@ -1,11 +1,11 @@
-package uz.gita.bookappcompose.di
+package uz.gita.bookappcompose.domain.di
 
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
-import uz.gita.bookappcompose.domain.SplashUseCase
-import uz.gita.bookappcompose.domain.SplashUseCaseImpl
+import uz.gita.bookappcompose.domain.usecase.SplashUseCase
+import uz.gita.bookappcompose.domain.usecase.impl.SplashUseCaseImpl
 
 
 @Module

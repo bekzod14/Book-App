@@ -1,11 +1,11 @@
-package uz.gita.bookappcompose.di
+package uz.gita.bookappcompose.domain.di
 
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import uz.gita.bookappcompose.data.repository.BookRepository
-import uz.gita.bookappcompose.data.repository.impl.BookRepositoryImpl
+import uz.gita.bookappcompose.domain.repository.BookRepository
+import uz.gita.bookappcompose.domain.repository.impl.BookRepositoryImpl
 import javax.inject.Singleton
 
 @Module

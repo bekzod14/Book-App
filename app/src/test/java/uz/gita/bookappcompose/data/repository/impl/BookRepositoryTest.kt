@@ -4,7 +4,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import org.junit.Before
 import uz.gita.bookappcompose.data.models.BookData
-import uz.gita.bookappcompose.data.source.local.room.BookDao
+import uz.gita.bookappcompose.data.local.room.dao.BookDao
 
 // Created by Jamshid Isoqov an 10/7/2022
 internal class BookRepositoryTest {

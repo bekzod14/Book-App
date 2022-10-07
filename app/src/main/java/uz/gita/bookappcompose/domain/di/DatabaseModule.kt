@@ -1,4 +1,4 @@
-package uz.gita.bookappcompose.di
+package uz.gita.bookappcompose.domain.di
 
 import android.content.Context
 import androidx.room.Room
@@ -7,8 +7,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import uz.gita.bookappcompose.data.source.local.room.AppDatabase
-import uz.gita.bookappcompose.data.source.local.room.BookDao
+import uz.gita.bookappcompose.data.local.room.database.AppDatabase
+import uz.gita.bookappcompose.data.local.room.dao.BookDao
 import javax.inject.Singleton
 
 @Module

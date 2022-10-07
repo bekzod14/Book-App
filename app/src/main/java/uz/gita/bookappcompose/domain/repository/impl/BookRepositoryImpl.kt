@@ -1,24 +1,20 @@
-package uz.gita.bookappcompose.data.repository.impl
+package uz.gita.bookappcompose.domain.repository.impl
 
 import android.os.Environment
-import android.util.Log
-import androidx.room.Dao
 import com.downloader.Error
 import com.downloader.OnDownloadListener
 import com.downloader.PRDownloader
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.FirebaseFirestoreException
-import com.google.firebase.firestore.QuerySnapshot
 import com.kiwimob.firestore.coroutines.snapshotAsFlow
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
-import uz.gita.bookappcompose.data.MySharedPreference
+import uz.gita.bookappcompose.data.local.shp.MySharedPreference
 import uz.gita.bookappcompose.data.models.BookData
-import uz.gita.bookappcompose.data.repository.BookRepository
-import uz.gita.bookappcompose.data.source.local.room.BookDao
+import uz.gita.bookappcompose.domain.repository.BookRepository
+import uz.gita.bookappcompose.data.local.room.dao.BookDao
 import uz.gita.bookappcompose.utils.toBookData
 import javax.inject.Inject
 
@@ -52,6 +48,7 @@ class BookRepositoryImpl @Inject constructor(
             }.start(object : OnDownloadListener {
                 override fun onDownloadComplete() {
                     trySend(DownloadResult.End)
+                    dao.insert(bookData)
                 }
 
                 override fun onError(error: Error?) {
