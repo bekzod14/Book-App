@@ -72,7 +72,6 @@ fun MainScreenContent(uiState: MainUiState, eventDispatcher: (MainIntent) -> Uni
                         }
                     }
                     else -> {}
-
                 }
 
             } else {

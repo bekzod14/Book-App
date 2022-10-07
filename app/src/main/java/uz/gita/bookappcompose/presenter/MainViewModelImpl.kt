@@ -10,7 +10,6 @@ import org.orbitmvi.orbit.syntax.simple.intent
 import org.orbitmvi.orbit.syntax.simple.reduce
 import org.orbitmvi.orbit.viewmodel.container
 import uz.gita.bookappcompose.domain.usecase.MainUseCase
-import uz.gita.bookappcompose.ui.intro.Intent
 import uz.gita.bookappcompose.ui.main.MainIntent
 import uz.gita.bookappcompose.ui.main.MainUiState
 import uz.gita.bookappcompose.ui.main.MainViewModel
