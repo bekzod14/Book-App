@@ -1,18 +1,19 @@
 package uz.gita.bookappcompose.ui.intro
 
 import android.widget.Toast
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -27,6 +28,7 @@ import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.rememberPagerState
 import com.google.accompanist.systemuicontroller.SystemUiController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Indicator
 import uz.gita.bookappcompose.R
 import uz.gita.bookappcompose.data.models.IntroData
 import uz.gita.bookappcompose.presenter.IntroScreenViewModelImpl
@@ -82,6 +84,7 @@ class IntroScreen : AndroidScreen() {
             modifier = Modifier.fillMaxWidth(),
             eventDispatcher
         )
+
     }
 }
 
@@ -126,5 +129,42 @@ fun OnBoardingPager(
                 }
             }
         }
+
+        Box(modifier = Modifier.align(Alignment.BottomCenter).padding(bottom = 16.dp)) {
+            PagerIndicator(item = item, currentPage = pagerState.currentPage)
+        }
+    }
+}
+
+@Composable
+fun PagerIndicator(item: List<IntroData>, currentPage: Int) {
+    Row(
+        horizontalArrangement = Arrangement.SpaceBetween,
+        modifier = Modifier.padding(top = 20.dp)
+    ) {
+        repeat(item.size) {
+            Indicator(
+                isSelected = it ==currentPage,
+                color = Color(0xFF3F51B5)
+
+            )
+        }
+
+    }
+
+}
+
+@Composable
+fun Indicator(isSelected: Boolean, color: Color) {
+    val width = animateDpAsState(targetValue = if (isSelected) 40.dp else 10.dp)
+    Box(
+        modifier = Modifier
+            .padding(4.dp)
+            .height(10.dp)
+            .width(width.value)
+            .clip(CircleShape)
+            .background(if (isSelected) color else Color.Gray.copy(alpha = .5f))
+    ) {
+
     }
 }
