@@ -17,6 +17,7 @@ import javax.inject.Inject
 class IntroScreenViewModelImpl @Inject constructor(
     private val direction: IntroScreenDirection
 ) : IntroScreenViewModel, ViewModel() {
+
     override fun onEventDispatcher(intent: Intent) = intent {
 
         reduce {
