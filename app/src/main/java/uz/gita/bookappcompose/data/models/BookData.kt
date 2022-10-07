@@ -17,6 +17,6 @@ data class BookData(
     val rating: Long,
     val seen: Long,
     val category: Long,
-    val saved: Boolean = false,
+    var saved: Boolean = false,
     var currentPage: Int = 0
 )
