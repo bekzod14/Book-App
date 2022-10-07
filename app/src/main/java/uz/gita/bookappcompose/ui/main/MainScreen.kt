@@ -2,6 +2,9 @@ package uz.gita.bookappcompose.ui.main
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -32,11 +35,15 @@ class MainScreen : AndroidScreen() {
 
 @Composable
 fun MainScreenContent(uiState: MainUiState, eventDispatcher: (MainIntent) -> Unit) {
-    val isHome = when (uiState) {
-        MainUiState.Books -> {
+    val isHome: Boolean = when (uiState) {
+        is MainUiState.Books -> {
             true
         }
-        MainUiState.SavedBooks -> {
+        is MainUiState.SavedBooks -> {
+            false
+        }
+
+        else -> {
             false
         }
     }
@@ -49,9 +56,26 @@ fun MainScreenContent(uiState: MainUiState, eventDispatcher: (MainIntent) -> Uni
         ) {
 
             if (isHome) {
-                //Text(text = "Main", modifier = Modifier.align(Alignment.Center))
+                when (uiState) {
+
+                    is MainUiState.Books -> {
+                        if (uiState.books.isEmpty()) {
+
+                            Text(text = "Saved", modifier = Modifier.align(Alignment.Center))
+                        } else {
+                            LazyColumn {
+                                items(uiState.books) {
+                                    BookItem(image = it.img, author = it.author, bookName = it.name)
+                                }
+                            }
+                        }
+                    }
+                    else -> {}
+
+                }
+
             } else {
-                //Text(text = "Saved", modifier = Modifier.align(Alignment.Center))
+//                Text(text = "Saved", modifier = Modifier.align(Alignment.Center))
             }
 
         }

@@ -47,5 +47,4 @@ fun BottomNavItem(
             Text(text = name, color = SELECTED_ICON_COLOR)
         }
     }
-
 }
