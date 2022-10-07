@@ -18,8 +18,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModelImpl @Inject constructor(
-    private val useCase: MainUseCase
-) : MainViewModel, ViewModel() {
+    private val useCase: MainUseCase,
+
+    ) : MainViewModel, ViewModel() {
 
     override val container: Container<MainUiState, Nothing> = container(MainUiState.Loading)
 
@@ -27,7 +28,8 @@ class MainViewModelImpl @Inject constructor(
         useCase.getBooks().onEach {
             intent {
                 reduce {
-                    MainUiState.Books(it) }
+                    MainUiState.Books(it)
+                }
             }
         }.launchIn(viewModelScope)
 

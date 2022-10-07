@@ -15,6 +15,7 @@ import cafe.adriel.voyager.androidx.AndroidScreen
 import cafe.adriel.voyager.hilt.getViewModel
 import org.orbitmvi.orbit.compose.collectAsState
 import uz.gita.bookappcompose.R
+import uz.gita.bookappcompose.data.models.BookData
 import uz.gita.bookappcompose.presenter.MainViewModelImpl
 import uz.gita.bookappcompose.ui.theme.BookAppTheme
 import uz.gita.bookappcompose.ui.theme.SELECTED_ICON_COLOR
@@ -65,7 +66,7 @@ fun MainScreenContent(uiState: MainUiState, eventDispatcher: (MainIntent) -> Uni
                         } else {
                             LazyColumn {
                                 items(uiState.books) {
-                                    BookItem(image = it.img, author = it.author, bookName = it.name)
+                                    BookItem(it, eventDispatcher)
                                 }
                             }
                         }
@@ -92,7 +93,23 @@ fun MainScreenContent(uiState: MainUiState, eventDispatcher: (MainIntent) -> Uni
                 name = "Home",
                 isSelected = isHome
             ) {
-                eventDispatcher.invoke(MainIntent.BooksClicked)
+                eventDispatcher.invoke(
+                    MainIntent.BooksClicked(
+                        BookData(
+                            1,
+                            "Halqa",
+                            "Ajoyib",
+                            "",
+                            "",
+                            "Akrom Malik",
+                            1,
+                            "",
+                            1,
+                            1,
+                            1
+                        )
+                    )
+                )
 
             }
 
@@ -106,21 +123,37 @@ fun MainScreenContent(uiState: MainUiState, eventDispatcher: (MainIntent) -> Uni
                 name = "Saved",
                 isSelected = !isHome
             ) {
-                eventDispatcher.invoke(MainIntent.SavedBooksClicked)
+                eventDispatcher.invoke(
+                    MainIntent.SavedBooksClicked(
+                        BookData(
+                            1,
+                            "Halqa",
+                            "Ajoyib",
+                            "",
+                            "",
+                            "Akrom Malik",
+                            1,
+                            "",
+                            1,
+                            1,
+                            1
+                        )
+                    )
+                )
             }
 
         }
     }
 }
 
-@Preview(showSystemUi = true)
-@Composable
-fun MainScreenPreview() {
-    BookAppTheme {
-        MainScreenContent(MainUiState.Books) {
-
-        }
-    }
-}
+//@Preview(showSystemUi = true)
+//@Composable
+//fun MainScreenPreview() {
+//    BookAppTheme {
+//        MainScreenContent(MainUiState.Books) {
+//
+//        }
+//    }
+//}
 
 

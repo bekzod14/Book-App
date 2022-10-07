@@ -10,6 +10,8 @@ sealed interface MainIntent {
 
     class BooksClicked(val bookData: BookData) : MainIntent
     class SavedBooksClicked(val bookData: BookData) : MainIntent
+//    object OpenInfo : MainIntent
+//    object OpenRead : MainIntent
 
 }
 
