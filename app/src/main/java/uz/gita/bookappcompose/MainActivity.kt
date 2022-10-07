@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
 
-            BookAppTheme() {
+            BookAppTheme {
                 Navigator(screen = SplashScreen()) { navigator ->
                     navigationHandler.navigationStack
                         .onEach { it.invoke(navigator) }

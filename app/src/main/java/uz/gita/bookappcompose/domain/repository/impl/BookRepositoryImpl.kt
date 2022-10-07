@@ -59,8 +59,6 @@ class BookRepositoryImpl @Inject constructor(
         awaitClose {
             PRDownloader.cancel(bookData.id)
         }
-
-
     }
 
     override suspend fun cancelDownload(bookData: BookData) {
