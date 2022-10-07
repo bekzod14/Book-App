@@ -1,8 +1,8 @@
-package uz.gita.bookappcompose.data.repository
+package uz.gita.bookappcompose.domain.repository
 
 import kotlinx.coroutines.flow.Flow
 import uz.gita.bookappcompose.data.models.BookData
-import uz.gita.bookappcompose.data.repository.impl.DownloadResult
+import uz.gita.bookappcompose.domain.repository.impl.DownloadResult
 
 interface BookRepository {
 

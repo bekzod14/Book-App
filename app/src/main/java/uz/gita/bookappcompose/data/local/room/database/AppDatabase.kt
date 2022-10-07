@@ -1,7 +1,8 @@
-package uz.gita.bookappcompose.data.source.local.room
+package uz.gita.bookappcompose.data.local.room.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import uz.gita.bookappcompose.data.local.room.dao.BookDao
 import uz.gita.bookappcompose.data.models.BookData
 
 @Database(

@@ -1,4 +1,4 @@
-package uz.gita.bookappcompose.data.source.local.room
+package uz.gita.bookappcompose.data.local.room.dao
 
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow

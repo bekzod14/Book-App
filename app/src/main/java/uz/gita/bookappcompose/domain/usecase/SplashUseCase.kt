@@ -1,4 +1,4 @@
-package uz.gita.bookappcompose.domain
+package uz.gita.bookappcompose.domain.usecase
 
 import kotlinx.coroutines.flow.Flow
 

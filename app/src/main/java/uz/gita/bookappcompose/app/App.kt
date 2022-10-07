@@ -3,7 +3,7 @@ package uz.gita.bookappcompose.app
 import android.app.Application
 import com.downloader.PRDownloader
 import dagger.hilt.android.HiltAndroidApp
-import uz.gita.bookappcompose.data.MySharedPreference
+import uz.gita.bookappcompose.data.local.shp.MySharedPreference
 
 @HiltAndroidApp
 class App : Application() {

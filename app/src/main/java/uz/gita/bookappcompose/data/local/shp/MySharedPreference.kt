@@ -1,4 +1,4 @@
-package uz.gita.bookappcompose.data
+package uz.gita.bookappcompose.data.local.shp
 
 import android.content.Context
 import android.content.SharedPreferences

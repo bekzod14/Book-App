@@ -1,4 +1,4 @@
-package uz.gita.bookappcompose.di
+package uz.gita.bookappcompose.domain.di
 
 import dagger.Binds
 import dagger.Module

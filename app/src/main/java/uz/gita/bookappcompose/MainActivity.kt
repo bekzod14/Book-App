@@ -29,7 +29,7 @@ class MainActivity : ComponentActivity() {
         setContent {
 
             BookAppTheme() {
-                Navigator(screen = ReadBookScreen()) { navigator ->
+                Navigator(screen = SplashScreen()) { navigator ->
                     navigationHandler.navigationStack
                         .onEach { it.invoke(navigator) }
                         .launchIn(lifecycleScope)
