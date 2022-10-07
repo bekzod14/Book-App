@@ -56,7 +56,7 @@ class IntroScreen : AndroidScreen() {
                 "Title - 1",
                 R.drawable.book1,
                 "Reading is good for you because it improves your focus, memory, empathy, and communication skills.",
-                Color.Red
+                Color(0xFFFFF6EA)
             )
         )
         items.add(
@@ -64,14 +64,15 @@ class IntroScreen : AndroidScreen() {
                 "Title - 2",
                 R.drawable.book2,
                 "It can reduce stress, improve your mental health, and help you live longer.",
-                Color.Yellow
+                Color(0xFFFFF6EA)
             )
         )
         items.add(
             IntroData(
                 "Title - 3",
                 R.drawable.book3,
-                "Reading also allows you to learn new things to help you succeed in your work and relationships."
+                "Reading also allows you to learn new things to help you succeed in your work and relationships.",
+                Color(0xFFFFF6EA)
             )
         )
 
