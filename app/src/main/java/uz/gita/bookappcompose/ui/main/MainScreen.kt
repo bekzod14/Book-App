@@ -2,6 +2,9 @@ package uz.gita.bookappcompose.ui.main
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -12,6 +15,7 @@ import cafe.adriel.voyager.androidx.AndroidScreen
 import cafe.adriel.voyager.hilt.getViewModel
 import org.orbitmvi.orbit.compose.collectAsState
 import uz.gita.bookappcompose.R
+import uz.gita.bookappcompose.data.models.BookData
 import uz.gita.bookappcompose.presenter.MainViewModelImpl
 import uz.gita.bookappcompose.ui.theme.BookAppTheme
 import uz.gita.bookappcompose.ui.theme.SELECTED_ICON_COLOR
@@ -32,11 +36,15 @@ class MainScreen : AndroidScreen() {
 
 @Composable
 fun MainScreenContent(uiState: MainUiState, eventDispatcher: (MainIntent) -> Unit) {
-    val isHome = when (uiState) {
-        MainUiState.Books -> {
+    val isHome: Boolean = when (uiState) {
+        is MainUiState.Books -> {
             true
         }
-        MainUiState.SavedBooks -> {
+        is MainUiState.SavedBooks -> {
+            false
+        }
+
+        else -> {
             false
         }
     }
@@ -49,9 +57,25 @@ fun MainScreenContent(uiState: MainUiState, eventDispatcher: (MainIntent) -> Uni
         ) {
 
             if (isHome) {
-                //Text(text = "Main", modifier = Modifier.align(Alignment.Center))
+                when (uiState) {
+
+                    is MainUiState.Books -> {
+                        if (uiState.books.isEmpty()) {
+
+                            Text(text = "Saved", modifier = Modifier.align(Alignment.Center))
+                        } else {
+                            LazyColumn {
+                                items(uiState.books) {
+                                    BookItem(it, eventDispatcher)
+                                }
+                            }
+                        }
+                    }
+                    else -> {}
+                }
+
             } else {
-                //Text(text = "Saved", modifier = Modifier.align(Alignment.Center))
+//                Text(text = "Saved", modifier = Modifier.align(Alignment.Center))
             }
 
         }
@@ -68,7 +92,23 @@ fun MainScreenContent(uiState: MainUiState, eventDispatcher: (MainIntent) -> Uni
                 name = "Home",
                 isSelected = isHome
             ) {
-                eventDispatcher.invoke(MainIntent.BooksClicked)
+                eventDispatcher.invoke(
+                    MainIntent.BooksClicked(
+                        BookData(
+                            1,
+                            "Halqa",
+                            "Ajoyib",
+                            "",
+                            "",
+                            "Akrom Malik",
+                            1,
+                            "",
+                            1,
+                            1,
+                            1
+                        )
+                    )
+                )
 
             }
 
@@ -82,21 +122,37 @@ fun MainScreenContent(uiState: MainUiState, eventDispatcher: (MainIntent) -> Uni
                 name = "Saved",
                 isSelected = !isHome
             ) {
-                eventDispatcher.invoke(MainIntent.SavedBooksClicked)
+                eventDispatcher.invoke(
+                    MainIntent.SavedBooksClicked(
+                        BookData(
+                            1,
+                            "Halqa",
+                            "Ajoyib",
+                            "",
+                            "",
+                            "Akrom Malik",
+                            1,
+                            "",
+                            1,
+                            1,
+                            1
+                        )
+                    )
+                )
             }
 
         }
     }
 }
 
-@Preview(showSystemUi = true)
-@Composable
-fun MainScreenPreview() {
-    BookAppTheme {
-        MainScreenContent(MainUiState.Books) {
-
-        }
-    }
-}
+//@Preview(showSystemUi = true)
+//@Composable
+//fun MainScreenPreview() {
+//    BookAppTheme {
+//        MainScreenContent(MainUiState.Books) {
+//
+//        }
+//    }
+//}
 
 

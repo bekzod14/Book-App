@@ -6,6 +6,8 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import uz.gita.bookappcompose.ui.intro.IntroScreenDirection
 import uz.gita.bookappcompose.ui.intro.IntroScreenDirectionImpl
+import uz.gita.bookappcompose.ui.main.MainScreenDirection
+import uz.gita.bookappcompose.ui.main.MainScreenDirectionImpl
 import uz.gita.bookappcompose.ui.splash.SplashScreenDirection
 import uz.gita.bookappcompose.ui.splash.SplashScreenDirectionImpl
 
@@ -17,4 +19,7 @@ interface DirectionModule {
 
     @Binds
     fun bindIntroScreenDirection(impl: IntroScreenDirectionImpl): IntroScreenDirection
+
+    @Binds
+    fun bindMainScreenDirection(impl: MainScreenDirectionImpl): MainScreenDirection
 }
