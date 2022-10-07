@@ -15,8 +15,8 @@ import uz.gita.bookappcompose.domain.usecase.impl.SplashUseCaseImpl
 interface UseCaseModule {
 
     @Binds
-    fun bind(splashUseCase: SplashUseCaseImpl): SplashUseCase
+    fun bindSlash(splashUseCase: SplashUseCaseImpl): SplashUseCase
 
     @Binds
-    fun bind(mainUseCase: MainUseCaseImpl): MainUseCase
+    fun bindMain(mainUseCase: MainUseCaseImpl): MainUseCase
 }
