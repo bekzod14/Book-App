@@ -38,7 +38,6 @@ class BookRepositoryImpl @Inject constructor(
     override suspend fun updateBookData(bookData: BookData) = dao.update(bookData)
 
     override fun downloadBook(bookData: BookData): Flow<DownloadResult> = callbackFlow {
-        Log.d("RRR", dirPath)
         PRDownloader.download(
             bookData.file,
             dirPath.plus("/${Environment.DIRECTORY_DOCUMENTS}"),
@@ -56,8 +55,6 @@ class BookRepositoryImpl @Inject constructor(
                 }
 
                 override fun onError(error: Error?) {
-                    Log.d("RRR", error.toString())
-                    Log.d("RRR", error?.serverErrorMessage ?: "")
                     trySend(DownloadResult.Error(error.toString()))
                 }
             })

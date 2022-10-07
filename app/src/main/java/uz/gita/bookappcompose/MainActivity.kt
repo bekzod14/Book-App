@@ -13,6 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import uz.gita.bookappcompose.navigator.NavigationHandler
+import uz.gita.bookappcompose.ui.read.ReadBookScreen
 import uz.gita.bookappcompose.ui.splash.SplashScreen
 import javax.inject.Inject
 
@@ -28,7 +29,7 @@ class MainActivity : ComponentActivity() {
         setContent {
 
             BookAppTheme() {
-                Navigator(screen = SplashScreen()) { navigator ->
+                Navigator(screen = ReadBookScreen()) { navigator ->
                     navigationHandler.navigationStack
                         .onEach { it.invoke(navigator) }
                         .launchIn(lifecycleScope)
